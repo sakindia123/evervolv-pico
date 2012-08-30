@@ -4,7 +4,7 @@ $(call inherit-product, vendor/ev/config/gsm.mk)
 PRODUCT_RELEASE_NAME := Explorer
 
 # Inherit some common Oxygen stuff.
-$(call inherit-product, vendor/oxygen/config/common_full_phone.mk)
+$(call inherit-product, vendor/ev/config/common_full_phone.mk)
 
 # Inherit device configuration.
 $(call inherit-product, device/htc/pico/pico.mk)
