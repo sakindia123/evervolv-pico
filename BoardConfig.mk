@@ -48,8 +48,8 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x09600000
 BOARD_FLASH_BLOCK_SIZE := 262144
 
 # Prebuilt kernel
-#TARGET_PREBUILT_KERNEL := device/htc/pico/prebuilt/kernel
-TARGET_KERNEL_CONFIG := htc_pico_defconfig
+TARGET_PREBUILT_KERNEL := device/htc/pico/prebuilt/kernel
+#TARGET_KERNEL_CONFIG := htc_pico_defconfig
 
 # Vold
 BOARD_VOLD_MAX_PARTITIONS := 24
