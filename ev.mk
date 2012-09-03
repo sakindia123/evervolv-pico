@@ -3,8 +3,9 @@ $(call inherit-product, vendor/ev/config/gsm.mk)
 
 PRODUCT_RELEASE_NAME := Explorer
 
-# Inherit some common Oxygen stuff.
+# Inherit some common Evervolv stuff.
 $(call inherit-product, vendor/ev/config/common_full_phone.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit device configuration.
 $(call inherit-product, device/htc/pico/pico.mk)
