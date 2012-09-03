@@ -47,9 +47,6 @@ on boot
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
     
-    # enable the GPS
-    setprop ro.ril.def.agps.mode 2
-
     # performance tweaks for flash
     write /sys/block/mtdblock3/bdi/read_ahead_kb 4
     write /sys/block/mtdblock4/bdi/read_ahead_kb 4
@@ -62,6 +59,13 @@ on boot
     setprop ro.ril.fast.dormancy.rule 1
     setprop ro.ril.fd.scron.timeout 4
     setprop ro.ril.fd.scroff.timeout 3
+
+# Bluetooth
+service hciattach /system/bin/logwrapper /system/bin/brcm_patchram_plus -d --no2bytes --tosleep=50000 --enable_hci --baudrate 3000000 --patchram /etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd /dev/ttyHS0
+    user root
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -Dwext -ieth0 -c/data/misc/wifi/wpa_supplicant.conf
@@ -105,10 +109,5 @@ service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     disabled
     oneshot
     keycodes 115 272
-
-service hciattach /system/bin/init.qcom.bt.sh
-    user root
-    group bluetooth net_bt_admin
-    disabled
 
 service dspcrashd /system/bin/dspcrashd
