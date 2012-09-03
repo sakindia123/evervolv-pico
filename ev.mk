@@ -9,6 +9,12 @@ $(call inherit-product, vendor/ev/config/common_full_phone.mk)
 # Inherit device configuration.
 $(call inherit-product, device/htc/pico/pico.mk)
 
+#
+# Extra Packages
+#
+PRODUCT_PACKAGES += \
+    Camera
+
 # Copy compatible bootanimation
 PRODUCT_COPY_FILES += \
     vendor/ev/prebuilt/hvga/media/bootanimation.zip:system/media/bootanimation.zip
