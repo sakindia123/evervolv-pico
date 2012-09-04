@@ -41,6 +41,8 @@ PRODUCT_PACKAGES += \
     dexpreopt \
     lights.msm7x27a \
     sensors.msm7x27a \
+    DSPManager \
+    FileManager \
        
 # Camera
 PRODUCT_PACKAGES += \
