@@ -168,7 +168,7 @@ PRODUCT_COPY_FILES += \
 
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/etc/srs_bypass.cfg:system/etc/soundimage/srs_bypass.cfg \
+    device/htc/pico/prebuilt/etc/soundimage/srs_bypass.cfg:system/etc/soundimage/srs_bypass.cfg \
     device/htc/pico/prebuilt/etc/soundimage/srsfx_trumedia_51.cfg:system/etc/soundimage/srsfx_trumedia_51.cfg \
     device/htc/pico/prebuilt/etc/soundimage/srsfx_trumedia_movie.cfg:system/etc/soundimage/srsfx_trumedia_movie.cfg \
     device/htc/pico/prebuilt/etc/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg \
