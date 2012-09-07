@@ -22,8 +22,6 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 # Target information
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
-
-# Yes we do,but let's hash it out
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -42,7 +40,7 @@ TARGET_PROVIDES_LIBAUDIO := true
 
 # Fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00400000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00500000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00600000 #kernel doesn't fit anymore in recovery!
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x0eb40000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x09600000
 BOARD_FLASH_BLOCK_SIZE := 262144
@@ -73,22 +71,25 @@ BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_LIBS := true
 TARGET_GRALLOC_USES_ASHMEM := true
 
-# Wifi related defines
-BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+# Wifi related definitions
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
-BOARD_WLAN_DEVICE := bcm4330
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/bcm4330.ko"
-WIFI_DRIVER_FW_PATH_STA := "/system/etc/firmware/fw_bcm4330b2.bin"
-WIFI_DRIVER_FW_PATH_AP := "/system/etc/firmware/fw_bcm4330b2_apsta.bin"
-WIFI_DRIVER_MODULE_NAME := "bcm4330"
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/firmware/fw_bcm4330b2.bin nvram_path=/proc/calibration iface_name=eth0"
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_HOSTAPD_DRIVER        := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
+BOARD_WLAN_DEVICE           := bcmdhd
+WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/bcmdhd.ko"
+WIFI_DRIVER_FW_PATH_STA := "/system/etc/firmware/fw_bcm4330_b2.bin"
+WIFI_DRIVER_FW_PATH_AP := "/system/etc/firmware/fw_bcm4330_apsta_b2.bin"
+WIFI_DRIVER_FW_PATH_P2P := "/system/etc/firmware/fw_bcm4330_p2p_b2.bin"
+WIFI_DRIVER_MODULE_NAME := "bcmdhd"
+WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/firmware/fw_bcm4330_b2.bin nvram_path=/proc/calibration iface_name=eth0 dhd_watchdog_ms=10 dhd_poll=1"
 
 # GPS
 BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := pico
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
-
 
 # Graphics
 BOARD_USE_SKIA_LCDTEXT := true
@@ -96,20 +97,28 @@ TARGET_USES_GENLOCK := true
 USE_OPENGL_RENDERER := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 TARGET_FORCE_CPU_UPLOAD := true
+BOARD_AVOID_DRAW_TEXTURE_EXTENSION := true
+TARGET_USES_C2D_COMPOSITION := false
+TARGET_USES_SF_BYPASS := false
+TARGET_HAVE_BYPASS := false
+TARGET_USES_OVERLAY := false
+TARGET_QCOM_HDMI_OUT := false
 
-# Browser
+# Browser & Misc.
 WITH_JIT := true
+ENABLE_WEBGL := true
 ENABLE_JSC_JIT := true
 JS_ENGINE := v8
 HTTP := chrome
-
-# ICS Stuff
 BOARD_HAS_NO_SELECT_BUTTON := true
 WITH_JIT := true
-ENABLE_JSC_JIT := true
-JS_ENGINE := v8
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=65
 
 # Touch screen compatibility for ICS
 BOARD_USE_LEGACY_TOUCHSCREEN := true
+
+# Fm radio
+BOARD_HAVE_FM_RADIO := true
+BOARD_FM_DEVICE := bcm4330
+BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO

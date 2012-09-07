@@ -116,6 +116,8 @@ ro.media.enc.vid.m4v.width     = 176,640
 ro.media.enc.vid.m4v.height    = 144,480
 ro.media.enc.vid.m4v.bps       = 64000,1600000
 ro.media.enc.vid.m4v.fps       = 1,30
+htc.audio.alc.enable = 1 
+htc.audio.swalt.enable = 1 
 
 # CAF & Misc.
 persist.rild.nitz_plmn=

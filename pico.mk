@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
-
 # Video decoding
 PRODUCT_PACKAGES += \
     libstagefrighthw \
@@ -41,16 +39,12 @@ PRODUCT_PACKAGES += \
     dexpreopt \
     lights.msm7x27a \
     sensors.msm7x27a \
-    DSPManager \
-    FileManager \
-       
+    gps.pico \
+    com.android.future.usb.accessory \
+           
 # Camera
 PRODUCT_PACKAGES += \
     camera.default    
-    
-# Misc
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory 
 
 # Hardware properties 
 PRODUCT_COPY_FILES += \
@@ -121,7 +115,7 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt Modules
 PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/bcm4330.ko:system/lib/modules/bcm4330.ko \
+    device/htc/pico/prebuilt/bcmdhd.ko:system/lib/modules/bcm4330.ko \
     device/htc/pico/prebuilt/kineto_gan.ko:system/lib/modules/kineto_gan.ko 
  
 # Wifi
@@ -129,10 +123,9 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/files/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/htc/pico/files/etc/dhcpd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
     device/htc/pico/prebuilt/etc/firmware/fw_bcm4330.bin:system/etc/firmware/fw_bcm4330.bin \
-    device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_apsta.bin:system/etc/firmware/fw_bcm4330_apsta.bin \
-    device/htc/pico/prebuilt/etc/firmware/fw_bcm4330b2.bin:system/etc/firmware/fw_bcm4330b2.bin \
-    device/htc/pico/prebuilt/etc/firmware/fw_bcm4330b2_apsta.bin:system/etc/firmware/fw_bcm4330b2_apsta.bin \
-    
+    device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_b2.bin:system/etc/firmware/fw_bcm4330_b2.bin \
+    device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_apsta_b2.bin:system/etc/firmware/fw_bcm4330_apsta_b2.bin \
+    device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_p2p_b2.bin:system/etc/firmware/fw_bcm4330_p2p_b2.bin \    
 # Audio
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
@@ -149,24 +142,29 @@ PRODUCT_COPY_FILES += \
 
 # 3D(ICS Blobs)
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    vendor/htc/pico/proprietary/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
-    vendor/htc/pico/proprietary/lib/libgsl.so:system/lib/libgsl.so \
-    vendor/htc/pico/proprietary/lib/libOpenVG.so:system/lib/libOpenVG.so \
-    vendor/htc/pico/proprietary/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
-    vendor/htc/pico/proprietary/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
-    vendor/htc/pico/proprietary/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
-    vendor/htc/pico/proprietary/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
-    vendor/htc/pico/proprietary/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
-    vendor/htc/pico/proprietary/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so 
+    device/htc/pico/prebuilt/etc/firmware/a225p5_pm4.fw:system/etc/firmware/a225p5_pm4.fw \
+    device/htc/pico/prebuilt/etc/firmware/a225_pfp.fw:system/etc/firmware/fw_a225_pfp.fw \
+    device/htc/pico/prebuilt/etc/firmware/a225_pm4.fw:system/etc/firmware/a225_pm4.fw \
+    device/htc/pico/prebuilt/etc/firmware/a300_pfp.fw:system/etc/firmware/a300_pfp.fw \
+    device/htc/pico/prebuilt/etc/firmware/a300_pm4.fw:system/etc/firmware/a300_pm4.fw \
+    device/htc/pico/prebuilt/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
+    device/htc/pico/prebuilt/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
+    device/htc/pico/prebuilt/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
+    device/htc/pico/prebuilt/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
+    device/htc/pico/prebuilt/lib/libgsl.so:system/lib/libgsl.so \
+    device/htc/pico/prebuilt/lib/libOpenVG.so:system/lib/libOpenVG.so \
+    device/htc/pico/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
+    device/htc/pico/prebuilt/lib/libC2D2.so:system/lib/libC2D2.so \
+    device/htc/pico/prebuilt/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
+    device/htc/pico/prebuilt/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
+    device/htc/pico/prebuilt/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
+    device/htc/pico/prebuilt/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
+    device/htc/pico/prebuilt/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
+    device/htc/pico/prebuilt/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so 
 
 # RIL
 PRODUCT_COPY_FILES += \
     vendor/htc/pico/proprietary/lib/libhtc_ril.so:system/lib/libhtc_ril.so \
-
-# GPS
-PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/lib/hw/gps.pico.so:system/lib/hw/gps.pico.so \
 
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
@@ -222,7 +220,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Make clean 
 PRODUCT_NAME := pico
 PRODUCT_DEVICE := pico
-PRODUCT_MODEL := HTC Explorer A310
+PRODUCT_MODEL := HTC Explorer A310e
 PRODUCT_BRAND := htc_europe
    
 # Inherit mdpi  
