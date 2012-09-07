@@ -1,6 +1,6 @@
 #!/system/bin/sh
 # Simple cached memory cleaner written by sakindia123
-echo " ***** CyanogenMod 9 Turbo-Booster***** "
+echo " ***** Evervolv Turbo-Booster***** "
 sync;
 sleep 1
 echo "3" > /proc/sys/vm/drop_caches;

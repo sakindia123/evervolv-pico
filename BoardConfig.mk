@@ -45,9 +45,8 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x0eb40000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x09600000
 BOARD_FLASH_BLOCK_SIZE := 262144
 
-# Prebuilt kernel
+# Prebuilt kernel(Evervolv ICS doesnt support inline kernel building)
 TARGET_PREBUILT_KERNEL := device/htc/pico/prebuilt/kernel
-#TARGET_KERNEL_CONFIG := htc_pico_defconfig
 
 # Vold
 BOARD_VOLD_MAX_PARTITIONS := 24
@@ -62,6 +61,7 @@ BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
+# Headers
 TARGET_SPECIFIC_HEADER_PATH := device/htc/pico/include
 
 # OpenGL drivers config file path
@@ -111,7 +111,6 @@ ENABLE_JSC_JIT := true
 JS_ENGINE := v8
 HTTP := chrome
 BOARD_HAS_NO_SELECT_BUTTON := true
-WITH_JIT := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=65
 
