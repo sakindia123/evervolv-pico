@@ -1,4 +1,4 @@
-## Specify phone tech before including full_phone
+# Specify phone tech before including full_phone
 $(call inherit-product, vendor/ev/config/gsm.mk)
 
 PRODUCT_RELEASE_NAME := Explorer
@@ -17,9 +17,9 @@ PRODUCT_PACKAGES += \
     FileManager \
     Camera
 
-# Copy compatible bootanimation
+# Copy AOSP ICS bootanimation
 PRODUCT_COPY_FILES += \
-    vendor/ev/prebuilt/hvga/media/bootanimation.zip:system/media/bootanimation.zip
+    device/htc/pico/prebuilt/aosp_ics_bootanimation.zip:system/media/bootanimation.zip
 
 PRODUCT_NAME := ev_pico
 PRODUCT_DEVICE := pico
