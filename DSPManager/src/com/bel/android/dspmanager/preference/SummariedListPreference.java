@@ -9,11 +9,10 @@ public class SummariedListPreference extends ListPreference {
 		super(context, set);
 	}
 
-	
 	@Override
 	public void setValue(String value) {
 		super.setValue(value);
-		
+
 		CharSequence[] entries = getEntries();
 		CharSequence[] entryValues = getEntryValues();
 		for (int i = 0; i < entryValues.length; i ++) {
@@ -23,7 +22,6 @@ public class SummariedListPreference extends ListPreference {
 			}
 		}
 	}
-
 
 	public void refreshFromPreference() {
 		onSetInitialValue(true, null);
