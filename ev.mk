@@ -40,7 +40,7 @@ PRODUCT_PACKAGES += \
 
 # Copy Apex Launcher
 PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/apex.apk:system/app/apex_launcher.apk
+    device/htc/pico/prebuilt/apex.apk:system/app/apex_launcher.apk \
 
 # Copy AOSP ICS bootanimation
 PRODUCT_COPY_FILES += \
