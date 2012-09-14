@@ -14,8 +14,6 @@ $(call inherit-product, device/htc/pico/pico.mk)
 
 # Extra Packages
 PRODUCT_PACKAGES += \
-    DSPManager \
-    FileManager \
     Camera
 
 # Copy compatible bootanimation & Apex launcher
