@@ -5,6 +5,7 @@ PRODUCT_RELEASE_NAME := Explorer
 
 # Inherit some common Evervolv stuff.
 $(call inherit-product, vendor/ev/config/common_full_phone.mk)
+$(call inherit-product, build/target/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
 
