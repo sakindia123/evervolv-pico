@@ -1,11 +1,15 @@
 #!/system/bin/sh
 # Simple cached memory cleaner written by sakindia123
 echo " ***** Evervolv Turbo-Booster***** "
+echo " RAM stats before turbo-charging"
+free
 sync;
 sleep 1
 echo "3" > /proc/sys/vm/drop_caches;
 echo "1" > /proc/sys/vm/drop_caches;
 sleep 1
-echo "** Your Phone has Been Turbo Boosted ** ";
+echo "** Your Phone has Been Turbo Boosted ** "
+echo " RAM stats before turbo-charging"
+free
 
 
