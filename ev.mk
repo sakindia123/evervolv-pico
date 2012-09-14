@@ -38,10 +38,6 @@ PRODUCT_PACKAGES += \
     FileManager \
     Camera
 
-# Copy Apex Launcher
-PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/apex.apk:system/app/apex_launcher.apk \
-
 # Copy AOSP ICS bootanimation
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/aosp_ics_bootanimation.zip:system/media/bootanimation.zip

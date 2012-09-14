@@ -199,6 +199,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=false \
     ro.vold.umsdirtyratio=20
 
+# Copy Apex Launcher
+PRODUCT_COPY_FILES += \
+    device/htc/pico/prebuilt/apex.apk:system/app/apex_launcher.apk \
+
 # Make clean 
 PRODUCT_NAME := pico
 PRODUCT_DEVICE := pico
