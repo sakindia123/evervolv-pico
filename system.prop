@@ -134,13 +134,13 @@ DEVICE_PROVISIONED=1
 debug.sf.hw=1
 debug.composition.7x27A.type=mdp
 media.stagefright.enable-player=true
-media.stagefright.enable-meta=false
 media.stagefright.enable-scan=true
 media.stagefright.enable-http=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-aac=true
 media.stagefright.enable-qcp=true
 ro.use_data_netmgrd=true
+ro.adb.qemud=1
 persist.data.ds_fmc_app.mode=0
 ro.staticwallpaper.pixelformat=RGB_565
 ro.max.fling_velocity=4000
@@ -162,4 +162,10 @@ dalvik.vm.dexopt-flags=m=y
 ro.config.sync=yes
 ro.phone_storage=0
 dalvik.vm.heapsize=32m
+dalvik.vm.stack-trace-file=/data/anr/traces.txt
+media.video.max-width=854
+media.video.max-height=480
+media.divx-video.max-width=854
+media.divx-video.max-height=480
+
 

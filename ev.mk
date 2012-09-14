@@ -16,6 +16,9 @@ $(call inherit-product, device/htc/pico/pico.mk)
 PRODUCT_PACKAGES += \
     Camera
 
+# Hot reboot
+PRODUCT_PACKAGE_OVERLAYS += vendor/ev/overlay/hot_reboot
+
 # Copy compatible bootanimation & Apex launcher
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/aosp_ics_bootanimation.zip:system/media/bootanimation.zip \
