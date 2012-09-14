@@ -4,7 +4,7 @@ ifeq ($(TARGET_DEVICE),pico)
     subdir_makefiles := \
 	 $(LOCAL_PATH)/libaudio/Android.mk \
 	 $(LOCAL_PATH)/DSPManager/Android.mk \
-         $(LOCAL_PATH)/FileManager/Android.mk  
+         $(LOCAL_PATH)/FileManager/Android.mk \
 #	 $(LOCAL_PATH)/libcamera/Android.mk \
      include $(subdir_makefiles)
 endif
