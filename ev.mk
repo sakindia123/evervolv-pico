@@ -12,6 +12,10 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
 # Inherit device configuration.
 $(call inherit-product, device/htc/pico/pico.mk)
 
+# Copy media profiles
+PRODUCT_COPY_FILES += \
+    device/htc/pico/files/etc/media_profiles.xml:system/etc/media_profiles.xml \   
+
 # Extra Packages
 PRODUCT_PACKAGES += \
     Camera
