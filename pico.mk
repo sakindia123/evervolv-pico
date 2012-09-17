@@ -209,11 +209,11 @@ PRODUCT_COPY_FILES += \
 
 # Apps to SD-EXT
 PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/etc/init.d/00banner:system/etc/00banner  \
-    device/htc/pico/prebuilt/etc/init.d/05mountext:system/etc/05mountext \
-    device/htc/pico/prebuilt/etc/init.d/06handleswap:system/etc/06handleswap \
-    device/htc/pico/prebuilt/etc/init.d/10apps2sd:system/etc/10apps2sd \
-    device/htc/pico/prebuilt/etc/init.d/90userinit:system/etc/90userinit \
+    device/htc/pico/prebuilt/etc/init.d/00banner:system/etc/init.d/00banner  \
+    device/htc/pico/prebuilt/etc/init.d/05mountext:system/etc/init.d/05mountext \
+    device/htc/pico/prebuilt/etc/init.d/06handleswap:system/etc/init.d/06handleswap \
+    device/htc/pico/prebuilt/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
+    device/htc/pico/prebuilt/etc/init.d/90userinit:system/etc/init.d/90userinit \
     device/htc/pico/prebuilt/turbo:system/bin/turbo \
     
 PRODUCT_PROPERTY_OVERRIDES += \
