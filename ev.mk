@@ -14,7 +14,7 @@ $(call inherit-product, device/htc/pico/pico.mk)
 
 # Copy media profiles
 PRODUCT_COPY_FILES += \
-    device/htc/pico/files/etc/media_profiles.xml:system/etc/media_profiles.xml \   
+    device/htc/pico/files/etc/media_profiles.xml:system/etc/media_profiles.xml
 
 # Extra Packages
 PRODUCT_PACKAGES += \
@@ -26,7 +26,7 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/ev/overlay/hot_reboot
 # Copy compatible bootanimation & Apex launcher
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/aosp_ics_bootanimation.zip:system/media/bootanimation.zip \
-    device/htc/pico/prebuilt/apex.apk:system/app/apex.apk \
+    device/htc/pico/prebuilt/apex.apk:system/app/apex.apk
 
 PRODUCT_NAME := ev_pico
 PRODUCT_DEVICE := pico
