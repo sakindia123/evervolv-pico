@@ -162,9 +162,11 @@ dalvik.vm.dexopt-flags=m=y
 ro.config.sync=yes
 ro.phone_storage=0
 dalvik.vm.heapsize=32m
-dalvik.vm.stack-trace-file=/data/anr/traces.txt
+debug.camcorder.disablemeta=0
+debug.composition.7x27A.type=mdp
 media.video.max-width=854
 media.video.max-height=480
 media.divx-video.max-width=854
 media.divx-video.max-height=480
+ro.hw_plat=7x27a
 

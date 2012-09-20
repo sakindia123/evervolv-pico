@@ -89,7 +89,7 @@ WIFI_DRIVER_FW_PATH_STA := "/system/etc/firmware/fw_bcm4330_b2.bin"
 WIFI_DRIVER_FW_PATH_AP := "/system/etc/firmware/fw_bcm4330_apsta_b2.bin"
 WIFI_DRIVER_FW_PATH_P2P := "/system/etc/firmware/fw_bcm4330_p2p_b2.bin"
 WIFI_DRIVER_MODULE_NAME := "bcmdhd"
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/firmware/fw_bcm4330_b2.bin nvram_path=/proc/calibration iface_name=eth0 dhd_watchdog_ms=10 dhd_poll=1"
+WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/firmware/fw_bcm4330_b2.bin nvram_path=/proc/calibration iface_name=eth0"
 
 # GPS
 BOARD_USES_QCOM_GPS := true
@@ -103,11 +103,14 @@ USE_OPENGL_RENDERER := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 TARGET_FORCE_CPU_UPLOAD := true
 BOARD_AVOID_DRAW_TEXTURE_EXTENSION := true
-TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_C2D_COMPOSITION := false
 TARGET_USES_SF_BYPASS := false
 TARGET_HAVE_BYPASS := false
 TARGET_USES_OVERLAY := false
 TARGET_QCOM_HDMI_OUT := false
+
+# RIL
+BOARD_USE_NEW_LIBRIL_HTC := true
 
 # Browser & Misc.
 WITH_JIT := true
