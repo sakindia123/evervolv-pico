@@ -15,8 +15,8 @@
 # proprietary side of the device
 # Inherit from those products. Most specific first
 
-# We havent decided what props we need,yet
-# $(call inherit-product-if-exists, vendor/htc/pico/pico-vendor.mk)
+# dalvik heap config for devices with 512MB memory
+$(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 
 # Video decoding
 PRODUCT_PACKAGES += \
@@ -30,14 +30,19 @@ PRODUCT_PACKAGES += \
     gralloc.msm7x27a \
     hwcomposer.msm7x27a \
     libtilerenderer \
-    libQcomUI
+    libQcomUI \
+    liboverlay \
+    libgenlock \
+    libmemalloc \
+    libtilerenderer \
     
 # Audio
 PRODUCT_PACKAGES += \
-    audio.primary.msm7x27a \
-    audio_policy.msm7x27a \
     audio.a2dp.default \
-    libaudioutils
+    audio_policy.msm7x27a \
+    audio.primary.msm7x27a \
+    libaudioutils \
+    libtinyalsa
 
 # Other
 PRODUCT_PACKAGES += \
@@ -54,7 +59,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     DSPManager \
-    FileManager
+    FileManager \
+    rild
 
 # Hardware properties 
 PRODUCT_COPY_FILES += \
@@ -106,14 +112,10 @@ PRODUCT_COPY_FILES += \
     vendor/htc/pico/proprietary/lib/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \
     vendor/htc/pico/proprietary/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so
     
-    
 # Set usb type
 ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.sys.usb.config=mass_storage \
     persist.service.adb.enable=1
-
-$(call inherit-product, build/target/product/full.mk)
-DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
 
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
@@ -135,8 +137,6 @@ PRODUCT_COPY_FILES += \
    
 # Wifi
 PRODUCT_COPY_FILES += \
-    device/htc/pico/files/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/htc/pico/files/etc/dhcpd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
     device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_b2.bin:system/etc/firmware/fw_bcm4330_b2.bin \
     device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_apsta_b2.bin:system/etc/firmware/fw_bcm4330_apsta_b2.bin \
     device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_p2p_b2.bin:system/etc/firmware/fw_bcm4330_p2p_b2.bin
@@ -204,14 +204,15 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/usr/idc/himax-touchscreen.idc:system/usr/idc/himax-touchscreen.idc \
     device/htc/pico/prebuilt/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
 
-# Apps to SD-EXT
+# Apps to SD-EXT & Misc.
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/init.d/00banner:system/etc/init.d/00banner  \
     device/htc/pico/prebuilt/etc/init.d/05mountext:system/etc/init.d/05mountext \
     device/htc/pico/prebuilt/etc/init.d/06handleswap:system/etc/init.d/06handleswap \
     device/htc/pico/prebuilt/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
     device/htc/pico/prebuilt/etc/init.d/90userinit:system/etc/init.d/90userinit \
-    device/htc/pico/prebuilt/turbo:system/bin/turbo
+    device/htc/pico/prebuilt/turbo:system/bin/turbo \
+    device/htc/pico/prebuilt/etc/ecclist_for_mcc.conf:system/etc/ecclist_for_mcc.conf
     
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.camera=pico \
@@ -222,7 +223,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.lockprof.threshold=500 \
     dalvik.vm.dexopt-flags=m=y \
     ro.telephony.call_ring.multiple=false \
-    ro.vold.umsdirtyratio=20
+    ro.vold.umsdirtyratio=20 \
+    dalvik.vm.dexopt-data-only=1
     
 # Make clean 
 PRODUCT_NAME := pico
@@ -233,5 +235,4 @@ PRODUCT_BRAND := htc_europe
 # Inherit mdpi  
 PRODUCT_AAPT_CONFIG := normal mdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
-PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0

@@ -1,12 +1,6 @@
-/dev/null                 0666   root       root
-/dev/zero                 0666   root       root
-/dev/full                 0666   root       root
-/dev/ptmx                 0666   root       root
-/dev/tty                  0666   root       root
-/dev/random               0666   root       root
-/dev/urandom              0666   root       root
-/dev/ashmem               0666   root       root
-/dev/binder               0666   root       root
+# init.c parses ueventd.rc first, then uevent.%DEVICE.rc.
+/dev/system_bus_freq      0660   system     system
+/dev/cpu_dma_latency      0660   system     system
 
 # logger should be world writable (for logging) but not readable
 /dev/log/*                0662   root       log

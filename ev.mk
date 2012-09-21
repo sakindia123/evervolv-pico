@@ -2,8 +2,10 @@
 $(call inherit-product, vendor/ev/config/gsm.mk)
 
 PRODUCT_RELEASE_NAME := Explorer
+PRODUCT_VERSION_DEVICE_SPECIFIC := -UNOFFICIAL-BUILD4
 
 # Inherit some common Evervolv stuff.
+$(call inherit-product, build/target/product/full.mk)
 $(call inherit-product, vendor/ev/config/common_full_phone.mk)
 $(call inherit-product, build/target/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
