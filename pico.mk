@@ -41,8 +41,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm7x27a \
     audio.primary.msm7x27a \
-    libaudioutils \
-    libtinyalsa
+    libaudioutils
 
 # Other
 PRODUCT_PACKAGES += \
@@ -58,7 +57,6 @@ PRODUCT_PACKAGES += \
 # Misc
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
-    DSPManager \
     FileManager \
     rild
 
@@ -133,8 +131,9 @@ PRODUCT_COPY_FILES += \
 # Prebuilt Modules
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
-    device/htc/pico/prebuilt/kineto_gan.ko:system/lib/modules/kineto_gan.ko 
-   
+    device/htc/pico/prebuilt/kineto_gan.ko:system/lib/modules/kineto_gan.ko \
+    device/htc/pico/prebuilt/cifs.ko:system/lib/modules/cifs.ko \
+    device/htc/pico/prebuilt/tun.ko:system/lib/modules/tun.ko
 # Wifi
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_b2.bin:system/etc/firmware/fw_bcm4330_b2.bin \
@@ -158,21 +157,21 @@ PRODUCT_COPY_FILES += \
     
 # 3D(ICS Blobs)
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    vendor/htc/pico/proprietary/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
-    vendor/htc/pico/proprietary/lib/libgsl.so:system/lib/libgsl.so \
-    vendor/htc/pico/proprietary/lib/libOpenVG.so:system/lib/libOpenVG.so \
-    vendor/htc/pico/proprietary/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
-    vendor/htc/pico/proprietary/lib/libC2D2.so:system/lib/libC2D2.so \
-    vendor/htc/pico/proprietary/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
-    vendor/htc/pico/proprietary/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
-    vendor/htc/pico/proprietary/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
-    vendor/htc/pico/proprietary/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
-    vendor/htc/pico/proprietary/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so 
+    device/htc/pico/prebuilt/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
+    device/htc/pico/prebuilt/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
+    device/htc/pico/prebuilt/lib/libgsl.so:system/lib/libgsl.so \
+    device/htc/pico/prebuilt/lib/libOpenVG.so:system/lib/libOpenVG.so \
+    device/htc/pico/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
+    device/htc/pico/prebuilt/lib/libC2D2.so:system/lib/libC2D2.so \
+    device/htc/pico/prebuilt/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
+    device/htc/pico/prebuilt/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
+    device/htc/pico/prebuilt/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
+    device/htc/pico/prebuilt/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
+    device/htc/pico/prebuilt/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so 
 
 # RIL
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/lib/libhtc_ril.so:system/lib/libhtc_ril.so
+    device/htc/pico/prebuilt/lib/libhtc_ril.so:system/lib/libhtc_ril.so
     
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
@@ -223,7 +222,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.lockprof.threshold=500 \
     dalvik.vm.dexopt-flags=m=y \
     ro.telephony.call_ring.multiple=false \
-    ro.vold.umsdirtyratio=20 \
+    ro.vold.umsdirtyratio=40 \
     dalvik.vm.dexopt-data-only=1
     
 # Make clean 
